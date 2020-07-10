@@ -13,14 +13,40 @@ def reconstruct_trip(tickets, length):
     cache= {}
     # add to cache where src= key, dest= value
     for i in range(length):
-      cache[tickets[i].source]= tickets[i].destination
-    
+      cache[tickets[i]]= None
+
+    # find starting dest. has NONE as src
     route= []
-    for i in range(length):
-      if cache[i][0]
+    start= {}
+    for i in cache:
+      if i.source == 'NONE':
+        start= i
+        route.append(start.destination)
+    # print(start)
+    # final dest has NONE as dest
 
 
-    print('cache: ', cache)
+    # start with 'start' get its dest
+    for i in cache:
+      if i.source == start.destination:
+        next= i.source
+        route.append(next)
+        start= i
+
+    print('next: ', next)
+      # if i.source == start.destination:
+      #   print(i.source)
+    # search and find ticket with src == start.dest
+    # that will be the next ticket.
+    # move to next ticket, and repeat
+
+
+
+
+    print('route: ', route)
+
+
+    # print('cache: ', cache)
 
 
 ticket_1 = Ticket("PIT", "ORD")
