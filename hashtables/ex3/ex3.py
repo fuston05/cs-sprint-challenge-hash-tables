@@ -3,8 +3,17 @@ def intersection(arrays):
     YOUR CODE HERE
     """
     # Your code here
+    cache1= {}
+    cache2= {}
 
-    return result
+    for i in range(len(arrays)):
+      cache1[i]= arrays[i]
+      cache2[i]= arrays[i]
+
+    for i in range(len(arrays-1)):
+      if cache1[i] in cache2[i]
+
+    return cache[0]
 
 
 if __name__ == "__main__":
