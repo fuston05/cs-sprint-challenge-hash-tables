@@ -11,26 +11,34 @@ def finder(files, queries):
     for i in files:
         splitFiles = i.split('/')
         sub = splitFiles[len(splitFiles)-1]
-        # we have to store the path as key for Large tests to work
-        if i not in cache:
-            cache[i] = sub
-            count += 1
+
+        # if key not in cache:
+        if sub not in cache:
+          # add that key
+          cache[sub]= tuple()
+          # add path to tuple value
+          cache[sub]+= (i,)
+
+        # if key IS in cache
+        else:
+          # check key  => values for our current value
+          for c in cache[sub]:
+            print('check tuple: ', c)
+
+        # else: 
+            # if it's not there, add new value to that key
+
+
+
 
     print('cache: ', cache)
     print('')
 
     res = []
-    count = 0
-    for q in queries:
-        # *** left off here trying to match the query to dict values ****
-        items = cache.values()
-        if q == items[]:
-            print('found Q: ', q)
-            res.append(k)
-        count += 1
+    
 
     res.sort()
-    print('res: ', res)
+    # print('res: ', res)
     print('')
     return res
 
@@ -38,6 +46,7 @@ def finder(files, queries):
 if __name__ == "__main__":
     files = [
         '/bin/foo',
+        '/test/foo',
         '/bin/bar',
         '/usr/bin/baz'
     ]
