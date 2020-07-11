@@ -1,5 +1,5 @@
 # Your code here
-cache= {}
+cache = {}
 
 
 def finder(files, queries):
@@ -7,37 +7,51 @@ def finder(files, queries):
     YOUR CODE HERE
     """
     # Your code here
-    count= 0
+    count = 0
     for i in files:
-      if i not in cache:
-        cache[i]= count
-        count+= 1
+        splitFiles = i.split('/')
+        sub = splitFiles[len(splitFiles)-1]
+        # we have to store the path as key for Large tests to work
+        if i not in cache:
+            cache[i] = sub
+            count += 1
 
-    res= []
-    for i in cache:
-      if queries[count] in cache:
-        res.append()
-      
+    print('cache: ', cache)
+    print('')
 
-    # print(res)
+    res = []
+    count = 0
+    for q in queries:
+        # *** left off here trying to match the query to dict values ****
+        items = cache.values()
+        if q == items[]:
+            print('found Q: ', q)
+            res.append(k)
+        count += 1
 
+    res.sort()
+    print('res: ', res)
+    print('')
     return res
 
 
 if __name__ == "__main__":
-    # files = [
-    #     '/bin/foo',
-    #     '/bin/bar',
-    #     '/usr/bin/baz'
-    # ]
-    files= []
-    # queries = [
-    #     "foo",
-    #     "qux",
-    #     "baz"
-    # ]
+    files = [
+        '/bin/foo',
+        '/bin/bar',
+        '/usr/bin/baz'
+    ]
+
     queries = [
-            "qux"
-        ]
+        "foo",
+        "qux",
+        "baz"
+    ]
+
+    # files= []
+
+    # queries = [
+    #         "qux"
+    #     ]
 
     print(finder(files, queries))
