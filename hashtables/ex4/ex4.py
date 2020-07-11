@@ -4,21 +4,32 @@ def has_negatives(a):
     """
     cache = {}
     # Your code here
-    string = ''
+    a.sort(reverse= True)
+
     for i in a:
-        string += str(i)+' '
-    string= string.split()
+      if i not in cache:
+        cache[i]= None
 
-    for i in string:
-        # print(i)
-        if i not in cache:
-            if i[0] == '-':
-                cache[i] = 'neg'
-            else: 
-              cache[i]= 'pos'
+    result= []
+    for c in cache:
+      isNeg= c- (c*2)
+      if isNeg in cache:
+        if c > 0:
+          result.append(c)
 
-
-    return cache
+    result.sort()
+    return result
 
 if __name__ == "__main__":
     print(has_negatives([-1, -2, 1, 2, 3, 4, -4]))
+    #                     [-4, -2, -1, 1, 2, 3, 4]
+
+    # print(has_negatives([1,2,3]))
+    # self.assertTrue(result == [])
+
+    # print(has_negatives([1,2,3,-4]))
+    # # self.assertTrue(result == [])
+
+    # print(has_negatives([-1,-2,1,2,3,4,-4]))
+    # result.sort()
+    # self.assertTrue(result == [1,2,4])
