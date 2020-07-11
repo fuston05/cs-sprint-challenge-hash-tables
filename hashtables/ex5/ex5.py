@@ -1,66 +1,36 @@
 # Your code here
-cache = {}
-
 
 def finder(files, queries):
     """
     YOUR CODE HERE
     """
+    cache = {}
+    res = []
     # Your code here
-    count = 0
     for i in files:
+        # get substr from file path, that matches queries
         splitFiles = i.split('/')
         sub = splitFiles[len(splitFiles)-1]
 
         # if key not in cache:
         if sub not in cache:
-          # add that key
-          cache[sub]= tuple()
-          # add path to tuple value
-          cache[sub]+= (i,)
+            # store 'sub' as key, and full path as tuple of values
+            # add that key to a new tuple
+            cache[sub] = tuple()
+            # add full path to tuple
+            cache[sub] += (i,)
 
         # if key IS in cache
         else:
-          # check key  => values for our current value
-          for c in cache[sub]:
-            print('check tuple: ', c)
+            # append path to existing tuple for given key
+            cache[sub] += (i,)
 
-        # else: 
-            # if it's not there, add new value to that key
-
-
-
-
-    print('cache: ', cache)
-    print('')
-
-    res = []
-    
-
+    for q in queries:
+      # get the KEY
+      if cache.get(q):
+        # if key is found
+        # check the tuple for the exact path value
+        for i in cache[q]:
+          res.append(i)
     res.sort()
-    # print('res: ', res)
-    print('')
     return res
-
-
-if __name__ == "__main__":
-    files = [
-        '/bin/foo',
-        '/test/foo',
-        '/bin/bar',
-        '/usr/bin/baz'
-    ]
-
-    queries = [
-        "foo",
-        "qux",
-        "baz"
-    ]
-
-    # files= []
-
-    # queries = [
-    #         "qux"
-    #     ]
-
-    print(finder(files, queries))
