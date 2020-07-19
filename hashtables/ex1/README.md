@@ -24,7 +24,7 @@ output: [ 3, 1 ]  # since these are the indices of weights 15 and 6 whose sum eq
 ```
 
 ## Hints
- 
+
 * A brute-force solution would involve two nested loops, yielding a
   quadratic-runtime solution. How can we use a hash table in order to
   implement a solution with a better runtime?
