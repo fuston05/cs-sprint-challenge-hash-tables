@@ -12,7 +12,6 @@ def has_negatives(a):
 
     for k, v in cache.items():
         if k > 0:
-            item= k
             cur= (k - (k*2))
             if cache.get(cur):
                 result.append(k)
